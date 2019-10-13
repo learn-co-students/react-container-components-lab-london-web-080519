@@ -16,6 +16,8 @@ export default class LatestMovieReviewsContainer extends Component {
         return fetch(url).then(response=> response.json())
     }
 
+    //place this in component did mount (as non-arrow function otherwise tests don't pass - check why) 
+    // so it renders once the container is up
     componentDidMount() {
         this.get(URL).then(reviews => this.setState( {reviews: reviews.results} ) )
     }
